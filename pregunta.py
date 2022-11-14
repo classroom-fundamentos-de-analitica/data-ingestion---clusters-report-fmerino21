@@ -37,13 +37,30 @@ def ingest_data():
             key_word += raw_rows[row][41:] + " "  
         else:
             key_word = key_word[:-1]
+            key_word = key_word.replace(".","")
             key_words.append(key_word)
             key_word = ""
 
     for i in range(len(key_words)):
         key_words[i] = key_words[i].replace(" ", "*")
-        key_words[i] = key_words[i].replace("**", "*")
+
+    """ for i in range(len(key_words)):
+        for j in range(5,0,-1):
+            key_words[i] = key_words[i].replace("*"*j, "*") """
+
+    for i in range(len(key_words)):
+        key_words[i] = key_words[i].replace("*****", "*")
+
+    for i in range(len(key_words)):
+        key_words[i] = key_words[i].replace("****", "*")
+
+    for i in range(len(key_words)):
         key_words[i] = key_words[i].replace("***", "*")
+
+    for i in range(len(key_words)):
+        key_words[i] = key_words[i].replace("**", "*")
+
+    for i in range(len(key_words)):   
         key_words[i] = key_words[i].replace("*", " ")
 
     dict = {'cluster': cluster, 
